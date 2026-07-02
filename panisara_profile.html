@@ -1,1 +1,338 @@
-1234
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ปาณิสรา ยานสุวรรณ์ — About Me</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Chonburi&family=Sarabun:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #F7F8FA;
+    --card: #FFFFFF;
+    --ink: #2B2E33;
+    --muted: #6B7280;
+    --accent: #7C86C9;
+    --accent-soft: #EEF0FB;
+    --peach: #E8B4A0;
+    --line: #E5E7EC;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: var(--bg);
+    color: var(--ink);
+    font-family: 'Sarabun', sans-serif;
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .wrap {
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 0 28px;
+  }
+
+  /* ---------- Wave divider — coastal Chonburi motif ---------- */
+  .wave {
+    width: 100%;
+    height: 32px;
+    display: block;
+  }
+  .wave path { fill: none; stroke: var(--accent); stroke-width: 2; opacity: 0.45; }
+
+  /* ---------- Hero ---------- */
+  header.hero {
+    padding: 88px 0 40px;
+    text-align: center;
+    opacity: 0;
+    animation: rise 0.8s ease forwards;
+  }
+
+  .eyebrow {
+    font-size: 0.8rem;
+    letter-spacing: 0.16em;
+    color: var(--accent);
+    text-transform: uppercase;
+    margin-bottom: 18px;
+    font-weight: 600;
+  }
+
+  h1.name {
+    font-family: 'Chonburi', serif;
+    font-size: clamp(2.2rem, 6vw, 3.2rem);
+    color: var(--ink);
+    margin-bottom: 6px;
+    line-height: 1.3;
+  }
+
+  .nickname {
+    color: var(--muted);
+    font-size: 1.05rem;
+    margin-bottom: 22px;
+  }
+
+  .nickname strong { color: var(--accent); font-weight: 600; }
+
+  .tagline {
+    max-width: 480px;
+    margin: 0 auto;
+    color: var(--muted);
+    font-size: 1rem;
+  }
+
+  /* ---------- Sections ---------- */
+  section { padding: 36px 0; }
+
+  h2.section-title {
+    font-family: 'Chonburi', serif;
+    font-size: 1.3rem;
+    margin-bottom: 22px;
+    color: var(--ink);
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  h2.section-title::after {
+    content: "";
+    flex: 1;
+    height: 1px;
+    background: var(--line);
+  }
+
+  /* ---------- About paragraph ---------- */
+  .about-text {
+    color: var(--ink);
+    font-size: 1.02rem;
+  }
+
+  /* ---------- Info grid ---------- */
+  .info-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 14px;
+    margin-top: 8px;
+  }
+
+  .info-card {
+    background: var(--card);
+    border: 1px solid var(--line);
+    border-radius: 14px;
+    padding: 18px 20px;
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+  }
+
+  .info-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 24px -14px rgba(124,134,201,0.35);
+  }
+
+  .info-card .label {
+    font-size: 0.75rem;
+    color: var(--muted);
+    letter-spacing: 0.04em;
+    margin-bottom: 6px;
+  }
+
+  .info-card .value {
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--ink);
+  }
+
+  /* ---------- Skills ---------- */
+  .skill-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 4px;
+  }
+
+  .skill-tag {
+    background: var(--accent-soft);
+    color: var(--accent);
+    font-size: 0.92rem;
+    font-weight: 600;
+    padding: 9px 18px;
+    border-radius: 999px;
+    border: 1px solid transparent;
+    transition: border-color 0.2s ease;
+  }
+
+  .skill-tag:hover { border-color: var(--accent); }
+
+  .skill-note {
+    margin-top: 14px;
+    color: var(--muted);
+    font-size: 0.92rem;
+  }
+
+  /* ---------- Interests ---------- */
+  .interest-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 14px;
+  }
+
+  .interest-card {
+    background: var(--card);
+    border: 1px solid var(--line);
+    border-radius: 14px;
+    padding: 24px 12px;
+    text-align: center;
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+  }
+
+  .interest-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 24px -14px rgba(232,180,160,0.5);
+  }
+
+  .interest-icon {
+    width: 34px;
+    height: 34px;
+    margin: 0 auto 10px;
+    color: var(--peach);
+  }
+
+  .interest-icon svg { width: 100%; height: 100%; stroke: currentColor; }
+
+  .interest-label {
+    font-size: 0.9rem;
+    color: var(--ink);
+    font-weight: 500;
+  }
+
+  /* ---------- Footer ---------- */
+  footer {
+    text-align: center;
+    padding: 50px 0 70px;
+    color: var(--muted);
+    font-size: 0.88rem;
+  }
+
+  footer .closing {
+    font-family: 'Chonburi', serif;
+    color: var(--accent);
+    font-size: 1.1rem;
+    margin-bottom: 10px;
+  }
+
+  @keyframes rise {
+    from { opacity: 0; transform: translateY(14px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  section {
+    opacity: 0;
+    animation: rise 0.8s ease forwards;
+  }
+  section:nth-of-type(1) { animation-delay: 0.05s; }
+  section:nth-of-type(2) { animation-delay: 0.12s; }
+  section:nth-of-type(3) { animation-delay: 0.19s; }
+  section:nth-of-type(4) { animation-delay: 0.26s; }
+
+  @media (prefers-reduced-motion: reduce) {
+    header.hero, section { animation: none; opacity: 1; }
+    .info-card, .interest-card { transition: none; }
+  }
+
+  @media (max-width: 520px) {
+    .info-grid { grid-template-columns: 1fr; }
+    .interest-grid { grid-template-columns: 1fr; }
+    header.hero { padding: 60px 0 30px; }
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 3px;
+  }
+</style>
+</head>
+<body>
+
+<div class="wrap">
+
+  <header class="hero">
+    <div class="eyebrow">About Me</div>
+    <h1 class="name">ปาณิสรา ยานสุวรรณ์</h1>
+    <p class="nickname">รู้จักกันในชื่อ <strong>มายด์</strong> · อายุ 18 ปี</p>
+    <p class="tagline">นักศึกษาเทคโนโลยีสารสนเทศจากชลบุรี ที่ผ่อนคลายด้วยเสียงเพลง ตัวหนังสือ และโลกในเกม</p>
+  </header>
+
+  <svg class="wave" viewBox="0 0 720 32" preserveAspectRatio="none">
+    <path d="M0,16 C60,30 120,2 180,16 C240,30 300,2 360,16 C420,30 480,2 540,16 C600,30 660,2 720,16" />
+  </svg>
+
+  <section>
+    <h2 class="section-title">เกี่ยวกับฉัน</h2>
+    <p class="about-text">
+      สวัสดีค่ะ ดิฉันชื่อ นางสาวปาณิสรา ยานสุวรรณ์ หรือเรียกสั้น ๆ ว่า มายด์ ปัจจุบันกำลังศึกษาอยู่ในระดับชั้น ปวส.1/2
+      สาขาเทคโนโลยีสารสนเทศ ที่วิทยาลัยอาชีวศึกษาชลบุรี สนใจเรียนรู้เรื่องเทคโนโลยีและการใช้งานคอมพิวเตอร์
+      เพื่อนำไปต่อยอดในการเรียนและการทำงานในอนาคต
+    </p>
+
+    <div class="info-grid">
+      <div class="info-card">
+        <div class="label">ระดับการศึกษา</div>
+        <div class="value">ปวส.1/2 เทคโนโลยีสารสนเทศ</div>
+      </div>
+      <div class="info-card">
+        <div class="label">สถาบัน</div>
+        <div class="value">วิทยาลัยอาชีวศึกษาชลบุรี</div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2 class="section-title">ทักษะ</h2>
+    <div class="skill-list">
+      <span class="skill-tag">Microsoft Word</span>
+      <span class="skill-tag">Microsoft Excel</span>
+      <span class="skill-tag">Microsoft PowerPoint</span>
+    </div>
+    <p class="skill-note">สามารถใช้งานโปรแกรม Microsoft เบื้องต้นได้</p>
+  </section>
+
+  <section>
+    <h2 class="section-title">สิ่งที่ชอบ</h2>
+    <div class="interest-grid">
+      <div class="interest-card">
+        <div class="interest-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/>
+          </svg>
+        </div>
+        <div class="interest-label">ฟังเพลง</div>
+      </div>
+      <div class="interest-card">
+        <div class="interest-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/>
+          </svg>
+        </div>
+        <div class="interest-label">อ่านนิยาย</div>
+      </div>
+      <div class="interest-card">
+        <div class="interest-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="2" y="7" width="20" height="12" rx="4"/><line x1="8" y1="12" x2="8" y2="14.5"/><line x1="6.5" y1="13.25" x2="9.5" y2="13.25"/><circle cx="16" cy="11.5" r="1"/><circle cx="18.5" cy="14" r="1"/>
+          </svg>
+        </div>
+        <div class="interest-label">เล่นเกม</div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="closing">ยินดีที่ได้รู้จักนะคะ</div>
+    <div>ขอบคุณที่แวะมาทำความรู้จักกัน 🌊</div>
+  </footer>
+
+</div>
+
+</body>
+</html>
